@@ -1,0 +1,1533 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>IRMAF – Ikatan Remaja Masjid Al-Furqon</title>
+
+    <!-- SEO & Meta -->
+    <meta name="description"
+        content="IRMAF – Ikatan Remaja Masjid Al-Furqon. Wadah remaja dan mahasiswa untuk kegiatan kajian, sosial, pendidikan, dan pembinaan kepemudaan.">
+    <meta name="keywords" content="IRMAF, remaja masjid, Al-Furqon, kegiatan remaja, kajian remaja">
+    <meta name="author" content="IRMAF Team">
+    <link rel="icon" type="image/png" href="https://files.catbox.moe/44rpu5.jpg">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- FONT & ICONS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css" rel="stylesheet">
+
+    <style>
+        :root { --irmaf-green: #16A34A; --irmaf-green-300: #86efac; --irmaf-bg: #f8fafc; --card-shadow: 0 12px 28px rgba(16, 164, 82, 0.08); }
+
+html { scroll-behavior: smooth; font-family: 'Cairo', system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial; }
+
+body::before { content: ''; position: fixed; inset: 0; pointer-events: none; opacity: 0.035; background-image: radial-gradient(circle at 10% 10%, rgba(22, 163, 74, 0.06) 0 1px, transparent 2px), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><g fill="none" stroke="%2316A34A" stroke-opacity="0.06" stroke-width="1"><path d="M60 10 L80 30 L60 50 L40 30 Z"/></g></svg>'); background-repeat: repeat; mix-blend-mode: overlay; }
+
+.card { background: white; border-radius: 14px; box-shadow: var(--card-shadow); transition: transform .45s cubic-bezier(.2, .9, .2, 1), box-shadow .45s; }
+
+.card:hover { transform: translateY(-6px); }
+
+.flip-card { perspective: 1000px; position: relative; width: 100%; height: 100%; }
+
+.flip-inner { position: relative; width: 100%; height: 100%; transition: transform 0.7s cubic-bezier(.2, .9, .2, 1); transform-style: preserve-3d; }
+
+.flip-card.flipped .flip-inner { transform: rotateY(180deg); }
+
+.flip-front, .flip-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 12px; overflow: hidden; top: 0; left: 0; }
+
+.flip-back { transform: rotateY(180deg); }
+
+.galeri-slider { transition: transform .6s cubic-bezier(.22, .9, .13, 1); }
+
+.notification{position:fixed;top:100px;right:20px;background:white;border-radius:14px;padding:0;box-shadow:0 12px 28px rgba(16,163,74,0.12);border-left:4px solid transparent;background-clip:padding-box;transform:translateX(420px);opacity:0;transition:all .45s cubic-bezier(.68,-.55,.265,1.55);z-index:10000;max-width:380px;width:90%;background-origin:border-box;background-image:linear-gradient(white,white);}
+.notification.show{transform:translateX(0);opacity:1;}
+.notification.success{background-color:white;}
+.notification.success {border-left-color:#16A34A;}
+.notification.error{border-left-color:#EF4444;}
+.notification.warning{border-left-color:#F59E0B;}
+.notification.info {border-left-color:#16A34A;}
+.notification-content{display:flex;align-items:flex-start;padding:20px;position:relative;}
+.notification-icon{width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-right:15px;}
+.notification.success .notification-icon{background:linear-gradient(90deg,#16A34A,#10B981);}
+.notification-icon i{color:white;font-size:14px;}
+.notification-text{flex:1;}
+.notification-title{font-weight:700;color:#1F2937;font-size:16px;margin-bottom:6px;}
+.notification-message{color:#4B5563;font-size:14px;line-height:1.4;}
+.notification-close{background:none;border:none;color:#9CA3AF;cursor:pointer;padding:4px 8px;margin:-8px -8px 0 0;border-radius:4px;transition:.2s;font-size:16px;}
+.notification-close:hover{color:#374151;background:#f3f4f6;}
+.notification-progress { position:absolute; bottom:0; left:0; width:100%; height:4px; transform:scaleX(1); transform-origin:left; transition:transform linear; border-radius:0 0 0 4px; }
+.notification.success .notification-progress { background:linear-gradient(90deg,#16A34A,#10B981); }
+.notification.error .notification-progress { background:linear-gradient(90deg,#EF4444,#DC2626); }
+.notification.warning .notification-progress { background:linear-gradient(90deg,#F59E0B,#D97706); }
+.notification.info .notification-progress { background:linear-gradient(90deg,#16A34A,#10B981); }
+
+@media(max-width:640px) { .notification { right: 10px; left: 10px; max-width: none; width: auto; } }
+
+.site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: background .35s, box-shadow .35s; padding: 12px; }
+
+.site-nav.transparent { background: transparent; backdrop-filter: blur(6px); }
+
+.site-nav.solid { background: rgba(255,255,255,0.96); box-shadow: 0 6px 20px rgba(2,6,23,0.06); }
+
+.hero-figure { transition: transform .8s cubic-bezier(.2, .9, .2, 1); }
+
+.hero-figure.group-hover-scale:hover { transform: scale(1.05) translateY(-8px); }
+
+.btn-primary { background: linear-gradient(90deg, var(--irmaf-green), #10b981); color: white; padding: .85rem 1.1rem; border-radius: 12px; font-weight: 600; box-shadow: 0 8px 20px rgba(16,163,74,0.12); transition: transform .22s, box-shadow .22s; }
+
+.btn-primary:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(16,163,74,0.16); }
+
+.reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s cubic-bezier(.2,.9,.2,1), transform .7s cubic-bezier(.2,.9,.2,1); }
+
+.reveal.show { opacity: 1; transform: translateY(0); }
+
+.wa-fab { transition: transform .35s cubic-bezier(.2,.9,.2,1), box-shadow .35s; }
+
+.wa-fab:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 16px 36px rgba(16,163,74,0.18); }
+
+#backtop { transition: transform .35s, opacity .35s; }
+
+.accent-green { color: var(--irmaf-green); }
+
+.bg-green-soft { background: linear-gradient(180deg, rgba(134,239,172,0.3), rgba(22,163,74,0.03)); }
+
+/* ========== RESPONSIVE FOR TABLET / IPAD (768–1024px) ========== */
+@media (min-width:768px) and (max-width:1024px){
+
+    /* HERO */
+    #heroText h1{font-size:2.4rem!important;line-height:1.2;}
+    #heroText p{font-size:1.05rem!important;max-width:90%;margin-left:auto;margin-right:auto;}
+    .hero-figure img{height:22rem!important;}
+    .hero-buttons{gap:10px!important;}
+
+    #kegiatan p.items-center{flex-wrap:wrap!important;row-gap:4px!important;}
+
+    /* PROGRAM / CARD */
+    .program-grid{grid-template-columns:repeat(2,1fr)!important;gap:18px!important;}
+
+    /* GALERI */
+    .galeri-item{min-width:50%!important;}
+
+    /* FOOTER */
+    footer .grid{grid-template-columns:repeat(2,1fr)!important;gap:30px!important;}
+    footer p,footer li,footer a{font-size:.9rem!important;}
+
+    /* NAVBAR */
+    .site-nav{padding:10px 18px!important;}
+    .site-nav img{height:45px!important;}
+}
+
+</style>
+
+</head>
+
+<body class="bg-gray-50 font-sans">
+
+    <!-- Notification Container -->
+    <div id="notificationContainer"></div>
+
+    <!-- Navigation -->
+    <nav id="siteNav" class="site-nav transparent">
+        <div class="max-w-7xl mx-auto flex items-center justify-between px-4">
+            <!-- Brand -->
+            <div class="flex items-center space-x-3">
+                <div
+                    class="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden border-2 border-white shadow-md">
+                    <img src="https://files.catbox.moe/44rpu5.jpg" alt="logo irmaf" loading="lazy" class="w-full h-full object-cover">
+                </div>
+                <div>
+                    <h1 class="text-base font-bold text-gray-900">IRMAF</h1>
+                    <p class="text-xs text-gray-500">Ikatan Remaja Masjid Al-Furqon</p>
+                </div>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden lg:flex items-center space-x-6">
+                <a href="#home"
+                    class="text-gray-700 hover:text-accent-green font-medium transition duration-200">Home</a>
+                <a href="#about"
+                    class="text-gray-700 hover:text-accent-green font-medium transition duration-200">Tentang</a>
+                <a href="#struktur"
+                    class="text-gray-700 hover:text-accent-green font-medium transition duration-200">Struktur</a>
+                <a href="#kegiatan"
+                    class="text-gray-700 hover:text-accent-green font-medium transition duration-200">Kegiatan</a>
+                <a href="#galeri"
+                    class="text-gray-700 hover:text-accent-green font-medium transition duration-200">Galeri</a>
+                <a href="#kontak"
+                    class="text-gray-700 hover:text-accent-green font-medium transition duration-200">Kontak</a>
+            </div>
+
+            <!-- Mobile Menu Button -->
+            <button id="hamburger" class="lg:hidden text-gray-700 text-xl">
+                <i class="ri-menu-line"></i>
+            </button>
+        </div>
+
+        <!-- Mobile Menu (kept) -->
+        <div id="mobileMenu" class="hidden transform opacity-0 transition-all duration-300">
+            <div class="flex flex-col space-y-4 px-4 pb-4">
+                <a href="#home" class="text-gray-700 hover:text-accent-green font-medium py-2">Home</a>
+                <a href="#about" class="text-gray-700 hover:text-accent-green font-medium py-2">Tentang</a>
+                <a href="#struktur" class="text-gray-700 hover:text-accent-green font-medium py-2">Struktur</a>
+                <a href="#kegiatan" class="text-gray-700 hover:text-accent-green font-medium py-2">Kegiatan</a>
+                <a href="#galeri" class="text-gray-700 hover:text-accent-green font-medium py-2">Galeri</a>
+                <a href="#kontak" class="text-gray-700 hover:text-accent-green font-medium py-2">Kontak</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <div id="home"></div>
+
+<section class="px-4 sm:px-6 md:px-20 
+               pt-24 pb-6 
+               bg-green-50 bg-green-soft
+               md:min-h-screen md:flex md:items-center">
+
+  <!-- MOBILE HERO (REKOMENDASI) -->
+<div class="md:hidden -mx-4 sm:-mx-6 -mt-8">
+
+    <!-- IMAGE -->
+    <div
+      class="w-full h-[320px] relative bg-cover bg-top bg-no-repeat"
+      style="background-image:url('https://files.catbox.moe/5qkbf4.jpg')"
+    >
+      <div class="absolute inset-0 bg-gradient-to-t
+        from-black/40 via-black/10 to-transparent"></div>
+    </div>
+
+    <!-- CARD -->
+    <div class="relative z-10 -mt-20 md:-mt-24 px-5">
+  <div
+    class="bg-white
+           rounded-2xl
+           shadow-[0_10px_30px_rgba(0,0,0,0.08)]
+           p-8
+           border border-gray-100">
+
+    <span class="inline-block mb-3 text-xs font-semibold
+                 text-green-700 bg-green-100
+                 px-3 py-1 rounded-full">
+      IRMAF – Ikatan Remaja Masjid Al-Furqon
+    </span>
+
+    <h1 class="text-2xl font-bold leading-tight mb-5">
+
+      Bergerak Bersama,<br>
+      <span class="text-green-600">Memberi Dampak Nyata</span>
+    </h1>
+
+    <p class="text-sm text-gray-600 mb-7 leading-relaxed">
+      Wadah remaja masjid untuk bertumbuh dalam iman,
+      aksi sosial, dan kegiatan positif yang bermakna.
+    </p>
+
+    <a href="#kegiatan" class="btn-primary w-full text-center rounded-xl py-3 font-bold">
+  Lihat Kegiatan →
+</a>
+
+  </div>
+</div>
+
+
+  </div>
+
+
+  <!-- DESKTOP -->
+  <div class="hidden md:flex items-center justify-center gap-16 w-full">
+
+  <!-- TEXT -->
+  <div class="w-1/2 max-w-xl reveal" id="heroText">
+    <p class="text-sm font-semibold text-green-600 mb-3">
+      IRMAF – Ikatan Remaja Masjid Al-Furqon
+    </p>
+
+    <h1 class="text-5xl font-bold text-gray-900 leading-tight mb-5">
+      Remaja Masjid,<br>
+      Bergerak & Berdampak
+    </h1>
+
+    <p class="text-gray-700 text-lg leading-relaxed mb-7">
+      Wadah pembinaan remaja untuk tumbuh dalam iman, aksi sosial,
+      dan kebersamaan. Bersama, kita memakmurkan masjid dan memberi
+      manfaat bagi sekitar.
+    </p>
+
+    <a href="#galeri" class="inline-block btn-primary">
+      Lihat Kegiatan
+    </a>
+  </div>
+
+  <!-- IMAGE -->
+  <div class="w-1/2 relative overflow-hidden rounded-2xl">
+    <img
+      src="https://files.catbox.moe/5qkbf4.jpg"
+      loading="eager"
+      alt="Foto Remaja Masjid"
+       class="w-full h-[26rem] lg:h-[28rem] object-cover rounded-2xl"
+
+    >
+
+    <div
+      class="absolute inset-0 rounded-2xl
+             bg-gradient-to-t from-black/30 via-black/5 to-transparent">
+    </div>
+  </div>
+
+</div>
+
+</section>
+
+
+
+
+    <!-- TENTANG IRMAF -->
+    <section id="about" class="w-full py-16 bg-white">
+        <div class="w-full px-6 sm:px-10 md:px-16 lg:px-24">
+            <h3 class="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-12 group reveal">
+                Tentang IRMAF
+                <div
+                    class="w-24 h-1 bg-gradient-to-r from-green-400 to-green-600 rounded-full mx-auto mt-4 transition-all duration-300 group-hover:w-32">
+                </div>
+            </h3>
+
+            <p class="text-gray-600 text-center max-w-5xl mx-auto mb-12 leading-relaxed reveal">
+                IRMAF adalah wadah pembinaan remaja masjid yang fokus pada pengembangan ruhani, sosial, dan kreativitas.
+                Kami mengadakan kajian rutin, bakti sosial, pelatihan kepemimpinan, dan kegiatan olahraga untuk menjaga
+                kesehatan jasmani dan rohani.
+            </p>
+
+            <!-- Visi & Misi -->
+            <div
+                class="bg-white border border-gray-200 rounded-2xl shadow-sm p-8 md:p-12 max-w-5xl mx-auto card reveal">
+                <h4 class="text-2xl font-bold text-center text-gray-900 mb-8 group cursor-pointer">
+                    Visi & Misi
+                    <div
+                        class="w-20 h-1 bg-gradient-to-r from-green-400 to-green-600 rounded-full mx-auto mt-3 transition-all duration-300 group-hover:w-32">
+                    </div>
+                </h4>
+
+                <div class="space-y-6">
+                    <!-- Visi -->
+                    <div class="bg-green-50 border-l-4 border-green-400 rounded-lg p-6">
+                        <p class="text-gray-800 font-semibold">
+                            <span class="text-green-600">Visi:</span> Menjadikan remaja Masjid Al-Furqon sebagai generasi berakhlak mulia, kreatif, peduli, berilmu, teladan, dan berperan aktif dalam memakmurkan masjid serta memberi kontribusi positif bagi masyarakat.
+
+                        </p>
+                    </div>
+
+                    <!-- Misi -->
+                    <div>
+                        <p class="text-gray-800 font-semibold mb-4">
+                            <span class="text-green-600">Misi:</span>
+                        </p>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <div class="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                <span class="text-gray-600">Meningkatkan akhlak dan iman remaja melalui kegiatan ibadah, pembinaan rutin, dan program keagamaan yang bermanfaat.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                <span class="text-gray-600">Mengembangkan potensi, kreativitas, dan minat remaja agar aktif, inovatif, dan mampu menjadi teladan di masjid maupun masyarakat.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                <span class="text-gray-600">Memperkuat kebersamaan dan solidaritas antaranggota melalui kegiatan sosial, edukatif, dan kreatif.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                <span class="text-gray-600">Memanfaatkan media dan teknologi untuk dakwah positif dan penyebaran kegiatan masjid.</span>
+                            </li>
+                            <li class="flex items-start">
+                                <div class="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
+                                <span class="text-gray-600">Melaksanakan kegiatan sosial yang berdampak nyata bagi lingkungan sekitar Masjid Al-Furqon dan masyarakat luas.</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- STRUKTUR ORGANISASI (SKIPPED CHANGES: keep functionality but visual uplift) -->
+    <section id="struktur" class="py-16 bg-gray-100">
+        <div class="max-w-6xl mx-auto px-4">
+            <h2 class="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-12 group cursor-pointer reveal">
+                Struktur Organisasi
+                <div
+                    class="w-32 h-1 bg-gradient-to-r from-green-400 to-green-600 rounded-full mx-auto mt-4 transition-all duration-300 group-hover:w-40">
+                </div>
+            </h2>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+
+                <!-- Ketua Umum -->
+                <div
+                    class="anggota card overflow-hidden group cursor-pointer transform transition duration-300 hover:scale-105 h-[28rem]">
+                    <div class="relative h-full overflow-hidden">
+                        <img src="https://files.catbox.moe/1u3kbm.jpg" alt="Paung, Ketua Umum IRMAF" loading="lazy"
+                            class="w-full h-full object-cover">
+                        <div class="overlay absolute inset-0 opacity-0 group-hover:opacity-100 flex flex-col justify-end items-center text-white p-6 text-center"
+                            style="background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));">
+                            <h3 class="text-xl font-bold text-white mb-2">Paung</h3>
+                            <p class="font-semibold mb-3">Ketua Umum</p>
+                            <span class="text-sm text-white/80 mb-4">Memimpin dan mengkoordinasikan seluruh kegiatan
+                                IRMAF dengan semangat kebersamaan.</span>
+                            <div class="sosmed flex space-x-4">
+                                <a href="https://wa.me/6285174091388" target="_blank" class="w-12 h-12 md:w-10 md:h-10 bg-white/20 rounded-full flex items-center justify-center 
+           hover:bg-green-500 hover:scale-110 transition duration-200">
+                                    <i class="fab fa-whatsapp text-2xl md:text-xl"></i>
+                                </a>
+
+                                <a href="https://instagram.com/paunghd" target="_blank" class="w-12 h-12 md:w-10 md:h-10 bg-white/20 rounded-full flex items-center justify-center 
+           hover:bg-pink-500 hover:scale-110 transition duration-200">
+                                    <i class="fab fa-instagram text-2xl md:text-xl"></i>
+                                </a>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Wakil Ketua -->
+                <div
+                    class="anggota card overflow-hidden group cursor-pointer transform transition duration-300 hover:scale-105 h-[28rem]">
+                    <div class="relative h-full overflow-hidden">
+                        <img src="https://files.catbox.moe/4o5djh.jpg" alt="Hafizh, Ketua IRMAF" loading="lazy"
+                            class="w-full h-full object-cover">
+                        <div class="overlay absolute inset-0 opacity-0 group-hover:opacity-100 flex flex-col justify-end items-center text-white p-6 text-center"
+                            style="background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));">
+                            <h3 class="text-xl font-bold text-white mb-2">Hafizh</h3>
+                            <p class="font-semibold mb-3">Wakil Ketua</p>
+                            <span class="text-sm text-white/80 mb-4">Mendampingi ketua serta mengawasi pelaksanaan
+                                program kerja IRMAF.</span>
+                            <div class="sosmed flex space-x-4">
+                                <a href="https://wa.me/6285782359266" target="_blank" class="w-12 h-12 md:w-10 md:h-10 bg-white/20 rounded-full flex items-center justify-center 
+           hover:bg-green-500 hover:scale-110 transition duration-200">
+                                    <i class="fab fa-whatsapp text-2xl md:text-xl"></i>
+                                </a>
+
+                                <a href="https://instagram.com/altepp_" target="_blank" class="w-12 h-12 md:w-10 md:h-10 bg-white/20 rounded-full flex items-center justify-center 
+           hover:bg-pink-500 hover:scale-110 transition duration-200">
+                                    <i class="fab fa-instagram text-2xl md:text-xl"></i>
+                                </a>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Sekretaris & Wakil (Flip Card) -->
+                <div
+                    class="flip-card relative card overflow-hidden group cursor-pointer transform transition duration-300 hover:scale-105 h-[28rem]">
+                    <div class="flip-inner relative w-full h-full transition-transform duration-700">
+                        <!-- DEPAN -->
+                        <div class="flip-front absolute inset-0 w-full h-full">
+                            <img src="https://files.catbox.moe/gx2igb.jpeg" alt="Radit, Sekretaris IRMAF" loading="lazy"
+                                class="w-full h-full object-cover">
+                            <div class="overlay absolute inset-0 opacity-0 group-hover:opacity-100 flex flex-col justify-end items-center text-white p-6 text-center"
+                                style="background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));">
+                                <h3 class="text-xl font-bold text-white mb-2">Radit</h3>
+                                <p class="font-semibold mb-3">Sekretaris</p>
+                                <span class="text-sm text-white/80 mb-4">Mengelola administrasi, surat menyurat, dan
+                                    dokumentasi kegiatan IRMAF.</span>
+                                <div class="sosmed flex space-x-4">
+                                    <a href="https://wa.me/628888554103" target="_blank" class="w-12 h-12 md:w-10 md:h-10 bg-white/20 rounded-full flex items-center justify-center 
+           hover:bg-green-500 hover:scale-110 transition duration-200">
+                                        <i class="fab fa-whatsapp text-2xl md:text-xl"></i>
+                                    </a>
+
+                                    <a href="https://instagram.com/fathgoingcrazyy" target="_blank" class="w-12 h-12 md:w-10 md:h-10 bg-white/20 rounded-full flex items-center justify-center 
+           hover:bg-pink-500 hover:scale-110 transition duration-200">
+                                        <i class="fab fa-instagram text-2xl md:text-xl"></i>
+                                    </a>
+                                </div>
+
+
+                            </div>
+                        </div>
+                        <!-- BELAKANG -->
+                        <div class="flip-back absolute inset-0 w-full h-full">
+                            <img src="https://files.catbox.moe/31zbm6.jpg" alt="Naura, Wakil Sekretaris IRMAF" loading="lazy"
+                                class="w-full h-full object-cover">
+                            <div class="overlay absolute inset-0 opacity-0 group-hover:opacity-100 flex flex-col justify-end items-center text-white p-6 text-center"
+                                style="background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));">
+                                <h3 class="text-xl font-bold text-white mb-2">Naura</h3>
+                                <p class="font-semibold mb-3">Wakil Sekretaris</p>
+                                <span class="text-sm text-white/80 mb-4">Mendampingi sekretaris dalam pengarsipan dan
+                                    pencatatan kegiatan IRMAF.</span>
+                                <div class="sosmed flex space-x-4">
+                                    <a href="https://wa.me/6285210480380" target="_blank" class="w-12 h-12 md:w-10 md:h-10 bg-white/20 rounded-full flex items-center justify-center 
+           hover:bg-green-500 hover:scale-110 transition duration-200">
+                                        <i class="fab fa-whatsapp text-2xl md:text-xl"></i>
+                                    </a>
+
+                                    <a href="https://instagram.com/nvr.ra_" target="_blank" class="w-12 h-12 md:w-10 md:h-10 bg-white/20 rounded-full flex items-center justify-center 
+           hover:bg-pink-500 hover:scale-110 transition duration-200">
+                                        <i class="fab fa-instagram text-2xl md:text-xl"></i>
+                                    </a>
+                                </div>
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Bendahara -->
+                <div
+                    class="anggota card overflow-hidden group cursor-pointer transform transition duration-300 hover:scale-105 h-[28rem]">
+                    <div class="relative h-full overflow-hidden">
+                        <img src="https://files.catbox.moe/0bzxko.jpg" alt="Zahira, Bendahara IRMAF" loading="lazy"
+                            class="w-full h-full object-cover">
+                        <div class="overlay absolute inset-0 opacity-0 group-hover:opacity-100 flex flex-col justify-end items-center text-white p-6 text-center"
+                            style="background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));">
+                            <h3 class="text-xl font-bold text-white mb-2">Zahira</h3>
+                            <p class="font-semibold mb-3">Bendahara</p>
+                            <span class="text-sm text-white/80 mb-4">Bertanggung jawab dalam pengelolaan dana dan
+                                laporan keuangan organisasi.</span>
+                            <div class="sosmed flex space-x-3">
+                                <a href="https://wa.me/6282218200870" target="_blank" class="w-12 h-12 md:w-10 md:h-10 bg-white/20 rounded-full flex items-center justify-center 
+           hover:bg-green-500 hover:scale-110 transition">
+                                    <i class="fab fa-whatsapp text-2xl md:text-xl"></i>
+                                </a>
+
+                                <a href="https://instagram.com/your.zahh" target="_blank" class="w-12 h-12 md:w-10 md:h-10 bg-white/20 rounded-full flex items-center justify-center 
+           hover:bg-pink-500 hover:scale-110 transition">
+                                    <i class="fab fa-instagram text-2xl md:text-xl"></i>
+                                </a>
+                            </div>
+
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- KEGIATAN TERBARU -->
+    <section id="kegiatan" class="py-16 bg-white">
+    <div class="max-w-6xl mx-auto px-4 reveal">
+        <div class="bg-white rounded-2xl p-8 card">
+            <h3 class="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-8 group cursor-pointer">
+                Kegiatan Terbaru
+                <div class="w-28 h-1 bg-gradient-to-r from-green-400 to-green-600 rounded-full mx-auto mt-3 transition-all duration-300 group-hover:w-36"></div>
+            </h3>
+
+            <p class="text-gray-600 text-center max-w-3xl mx-auto mb-12 leading-relaxed">
+                Kegiatan IRMAF dilaksanakan secara rutin sebagai wadah pembinaan spiritual, sosial, dan kreativitas
+                remaja masjid. Kami berkomitmen menumbuhkan semangat kebersamaan, dakwah, dan kepemimpinan muda di
+                lingkungan Masjid Al-Furqon.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+
+                <!-- Rihlah -->
+                <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
+                    <img src="https://files.catbox.moe/8os3ez.jpg" alt="Kegiatan rihlah IRMAF di Cibodas Jawa Barat" loading="lazy" class="w-full h-48 object-cover rounded-xl mb-4" >
+                    <h4 class="text-xl font-semibold text-gray-900 mb-2">Rihlah</h4>
+
+                    <p class="text-gray-500 text-sm mb-3">
+                        <span class="flex items-center">
+                            <i class="ri-calendar-line mr-2"></i>Ahad, 13 Juli 2024
+                        </span>
+                        <span class="flex items-center mt-1">
+                            <i class="ri-map-pin-line mr-2"></i>Cibodas, Jawa Barat
+                        </span>
+                    </p>
+
+                    <p class="text-gray-600 leading-relaxed">
+                        Kegiatan tafakur di alam Cibodas, menikmati keindahan ciptaan Allah SWT, dalam rangka
+                        mempererat kebersamaan dan kemandirian.
+                    </p>
+                </div>
+
+                <!-- Takjil -->
+                <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
+                    <img src="https://files.catbox.moe/0sp247.jpg" alt="Kegiatan Takjil On The Road Ramadhan 1446 H di Gerbang Masuk BM" loading="lazy"  class="w-full h-48 object-cover rounded-xl mb-4">
+                    <h4 class="text-xl font-semibold text-gray-900 mb-2">Takjil On The Road Ramadhan 1446 H</h4>
+
+                    <p class="text-gray-500 text-sm mb-3">
+                        <span class="flex items-center">
+                            <i class="ri-calendar-line mr-2"></i>Jum'at, 21 Maret 2025
+                        </span>
+                        <span class="flex items-center mt-1">
+                            <i class="ri-map-pin-line mr-2"></i>Gerbang Masuk BM
+                        </span>
+                    </p>
+
+                    <p class="text-gray-600 leading-relaxed">
+                        Kegiatan berbagi takjil untuk pengendara, tukang ojek, dan masyarakat yang membutuhkan.
+                    </p>
+                </div>
+
+                <!-- Futsal -->
+                <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
+                    <img src="https://files.catbox.moe/x5zttx.png" alt="Kegiatan IRMAF CUP di Futsal Ala-Olo, Bekasi" loading="lazy" class="w-full h-48 object-cover rounded-xl mb-4">
+                    <h4 class="text-xl font-semibold text-gray-900 mb-2">IRMAF CUP 2025</h4>
+
+                    <p class="text-gray-500 text-sm mb-3">
+                        <span class="flex items-center">
+                            <i class="ri-calendar-line mr-2"></i>Ahad, 24 Agustus 2025
+                        </span>
+                        <span class="flex items-center mt-1">
+                            <i class="ri-map-pin-line mr-2"></i>Futsal Ala-Olo, Bekasi
+                        </span>
+                    </p>
+
+                    <p class="text-gray-600 leading-relaxed">
+                        Perlombaan futsal Irmaf Cup 2025 bertujuan mempererat tali persaudaraan antar remaja sekaligus menanamkan nilai-nilai keislaman melalui sportivitas.
+                    </p>
+                </div>
+
+
+                <!--fun futsal--->
+                <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
+                    <img src="https://files.catbox.moe/10ypjx.jpeg" alt="Kegiatan SPORT DAY di Estadio Futsal, Bekasi" loading="lazy" class="w-full h-48 object-cover rounded-xl mb-4">
+                    <h4 class="text-xl font-semibold text-gray-900 mb-2">SPORT DAY</h4>
+
+                    <p class="text-gray-500 text-sm mb-3">
+                        <span class="flex items-center">
+                            <i class="ri-calendar-line mr-2"></i>Bulanan
+                        </span>
+                        <span class="flex items-center mt-1">
+                            <i class="ri-map-pin-line mr-2"></i>Estadio Futsal, Bekasi
+                        </span>
+                    </p>
+
+                    <p class="text-gray-600 leading-relaxed">
+                        Sebuah ajang futsal rutin yang tidak hanya mengejar prestasi di lapangan, tetapi juga memperkokoh tali persaudaraan dan membentuk karakter remaja muslim yang sportif dan aktif.
+                    </p>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- GALERI KEGIATAN -->
+    <section id="galeri" class="py-20 bg-gray-50">
+    <div class="max-w-6xl mx-auto px-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-center text-gray-900 mb-14 group cursor-pointer">
+            Galeri Kegiatan
+            <div class="w-32 h-1 bg-gradient-to-r from-green-400 to-green-600 rounded-full mx-auto mt-4 transition-all duration-300 group-hover:w-40"></div>
+        </h2>
+
+        <div class="galeri-container relative overflow-hidden w-full max-w-5xl mx-auto">
+
+            <!-- LEFT BUTTON -->
+            <button class="slide-btn prev absolute left-3 md:left-5 top-1/2 -translate-y-1/2 
+                bg-white/50 backdrop-blur-md text-gray-900 border border-gray-300 
+                hover:bg-white hover:shadow-lg transition duration-300 
+                rounded-full p-2 md:p-3 z-10">
+                &#10094;
+            </button>
+
+            <!-- SLIDER -->
+            <div class="galeri-slider flex transition-transform duration-700 ease-out">
+                
+                <!-- ITEM -->
+                <div class="galeri-item min-w-full md:min-w-[50%] lg:min-w-[33.333%] px-3">
+                    <div class="bg-white rounded-3xl shadow-[0_10px_40px_rgba(16,163,74,0.12)] overflow-hidden group cursor-pointer">
+                        <div class="relative h-80 overflow-hidden">
+                            <img src="https://files.catbox.moe/8os3ez.jpg" alt="Kegiatan rihlah IRMAF di Cibodas Jawa Barat" loading="lazy"
+                                class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+                            
+                            <!-- Overlay Premium -->
+                            <div class="absolute inset-0 bg-black/60 backdrop-blur-[2px] 
+                                opacity-0 group-hover:opacity-100 transition duration-500 
+                                flex flex-col justify-center items-center text-white p-5 text-center">
+                                <h3 class="text-xl font-semibold mb-2 drop-shadow-md">Rihlah</h3>
+                                <p class="text-sm opacity-90">Kegiatan tafakur di alam Cibodas, menikmati keindahan ciptaan Allah SWT, dalam rangka mempererat kebersamaan dan kemandirian.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COPY ITEM 2 -->
+                <div class="galeri-item min-w-full md:min-w-[50%] lg:min-w-[33.333%] px-3">
+                    <div class="bg-white rounded-3xl shadow-[0_10px_40px_rgba(16,163,74,0.12)] overflow-hidden group cursor-pointer">
+                        <div class="relative h-80 overflow-hidden">
+                            <img src="https://files.catbox.moe/0sp247.jpg" alt="Kegiatan Takjil On The Road Ramadhan 1446 H di Gerbang Masuk BM" loading="lazy"
+                                class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+
+                            <div class="absolute inset-0 bg-black/60 backdrop-blur-[2px]
+                                opacity-0 group-hover:opacity-100 transition duration-500 
+                                flex flex-col justify-center items-center text-white p-5 text-center">
+                                <h3 class="text-xl font-semibold mb-2">TAKJIL ON THE ROAD   </h3>
+                                <p class="text-sm opacity-90">Kegiatan berbagi takjil untuk pengendara, tukang ojek, dan masyarakat yang membutuhkan.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- COPY ITEM 3 -->
+                <div class="galeri-item min-w-full md:min-w-[50%] lg:min-w-[33.333%] px-3">
+                    <div class="bg-white rounded-3xl shadow-[0_10px_40px_rgba(16,163,74,0.12)] overflow-hidden group cursor-pointer">
+                        <div class="relative h-80 overflow-hidden">
+                            <img src="https://files.catbox.moe/x5zttx.png" alt="Kegiatan IRMAF CUP di Futsal Ala-Olo, Bekasi" loading="lazy"
+                                class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+
+                            <div class="absolute inset-0 bg-black/60 backdrop-blur-[2px]
+                                opacity-0 group-hover:opacity-100 transition duration-500 
+                                flex flex-col justify-center items-center text-white p-5 text-center">
+                                <h3 class="text-xl font-semibold mb-2">IRMAF CUP </h3>
+                                <p class="text-sm opacity-90">Perlombaan futsal Irmaf Cup 2025 bertujuan mempererat tali persaudaraan antar remaja sekaligus menanamkan nilai-nilai keislaman melalui sportivitas.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="galeri-item min-w-full md:min-w-[50%] lg:min-w-[33.333%] px-3">
+                    <div class="bg-white rounded-3xl shadow-[0_10px_40px_rgba(16,163,74,0.12)] overflow-hidden group cursor-pointer">
+                        <div class="relative h-80 overflow-hidden">
+                            <img src="https://files.catbox.moe/10ypjx.jpeg" alt="Kegiatan SPORT DAY di Estadio Futsal, Bekasi" loading="lazy"
+                                class="w-full h-full object-cover transition duration-700 group-hover:scale-105">
+
+                            <div class="absolute inset-0 bg-black/60 backdrop-blur-[2px]
+                                opacity-0 group-hover:opacity-100 transition duration-500 
+                                flex flex-col justify-center items-center text-white p-5 text-center">
+                                <h3 class="text-xl font-semibold mb-2">SPORT DAY</h3>
+                                <p class="text-sm opacity-90">Sebuah ajang futsal rutin yang tidak hanya mengejar prestasi di lapangan, tetapi juga memperkokoh tali persaudaraan dan membentuk karakter remaja muslim yang sportif dan aktif.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            
+
+            <!-- RIGHT BUTTON -->
+            <button class="slide-btn next absolute right-3 md:right-5 top-1/2 -translate-y-1/2 
+                bg-white/50 backdrop-blur-md text-gray-900 border border-gray-300 
+                hover:bg-white hover:shadow-lg transition duration-300 
+                rounded-full p-2 md:p-3 z-10">
+                &#10095;
+            </button>
+
+        </div>
+    </div>
+</section>
+
+
+    <!-- KONTAK & SARAN -->
+    <section id="kontak" class="py-16 bg-white">
+        <div class="max-w-4xl mx-auto px-4 reveal">
+            <div class="bg-white rounded-2xl p-8 shadow-lg card">
+                <h3 class="text-2xl md:text-3xl font-bold text-center text-gray-900 mb-8 group cursor-pointer">
+                    Kontak & Saran
+                    <div
+                        class="w-28 h-1 bg-gradient-to-r from-green-400 to-green-600 rounded-full mx-auto mt-3 transition-all duration-300 group-hover:w-36">
+                    </div>
+                </h3>
+
+                <form id="kontakForm" class="space-y-6">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <input type="text" name="user_name" placeholder="Nama Anda"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+                                required>
+                        </div>
+                        <div>
+                            <input type="email" name="user_email" placeholder="Email"
+                                class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+                                required>
+                        </div>
+                    </div>
+
+                    <div>
+                        <textarea name="message" rows="5" placeholder="Pesan atau saran..."
+                            class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-green-400"
+                            required></textarea>
+                    </div>
+
+                    <button type="submit"
+                        class="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-4 rounded-lg font-semibold hover:opacity-95 transition duration-200 shadow-md">
+                        Kirim Pesan
+                    </button>
+                    <input type="hidden" name="timestamp">
+
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="bg-gray-900 text-white py-12">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <!-- Brand -->
+                <div>
+                    <div class="flex items-center space-x-3 mb-4">
+                        <div
+                            class="w-10 h-10 rounded-full flex items-center justify-center overflow-hidden border-2 border-white shadow-md">
+                            <img src="https://files.catbox.moe/44rpu5.jpg" alt="irmaf logo"
+                                class="w-full h-full object-cover">
+                        </div>
+                        <h4 class="text-lg font-semibold">IRMAF</h4>
+                    </div>
+                    <p class="text-gray-400 text-sm leading-relaxed">
+                        Ikatan Remaja Masjid Al-Furqon — Membangun ukhuwah, semangat dakwah, dan kepedulian sosial untuk
+                        generasi muda masjid.
+                    </p>
+                </div>
+
+                <!-- Navigasi -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Navigasi</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-400 hover:text-white transition duration-200">Beranda</a>
+                        </li>
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition duration-200">Tentang</a>
+                        </li>
+                        <li><a href="#struktur"
+                                class="text-gray-400 hover:text-white transition duration-200">Struktur</a></li>
+                        <li><a href="#kegiatan"
+                                class="text-gray-400 hover:text-white transition duration-200">Kegiatan</a></li>
+                        <li><a href="#galeri" class="text-gray-400 hover:text-white transition duration-200">Galeri</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Kontak -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Kontak</h4>
+                    <div class="space-y-3">
+                        <p class="text-gray-400 text-sm flex items-center">
+                            <i class="ri-map-pin-line mr-3 text-green-400"></i>
+                            Masjid Al-Furqon, Kota Bekasi
+                        </p>
+                        <p class="text-gray-400 text-sm flex items-center">
+                            <i class="ri-mail-line mr-3 text-green-400"></i>
+                            irmaf.bm@gmail.com
+                        </p>
+                        <p class="text-gray-400 text-sm flex items-center">
+                            <i class="ri-whatsapp-line mr-3 text-green-400"></i>
+                            +62 851-7409-1388
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Social Media -->
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Ikuti Kami</h4>
+                    <div class="flex space-x-4">
+                        <a href="https://instagram.com/irmaf.bm"
+                            target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-500 transition duration-200">
+                            <i class="ri-instagram-line"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 mt-8 pt-8 text-center">
+                <p class="text-gray-400 text-sm">
+                    © <span id="year"></span> IRMAF – Ikatan Remaja Masjid Al-Furqon. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Card with Smooth Animation (improved) -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col items-end">
+
+        <!-- Cards nomor WA -->
+        <div id="wa-cards"
+            class="flex flex-col mb-3 space-y-3 opacity-0 translate-y-4 pointer-events-none transition-all duration-300">
+
+            <!-- Card DKM Alfuroqn -->
+            <a href="https://wa.me/6282113001036?text=Assalamu'alaikum%20saya%20mau%20tanya%20tentang%20DKM%20Al-Furqon."
+                target="_blank" class="w-56 bg-white rounded-xl shadow-lg flex items-center justify-between px-4 py-3 hover:bg-green-50 transition duration-200">
+                <div class="flex flex-col">
+                    <span class="font-semibold text-green-700">DKM Al-Furqon</span>
+                    <span class="text-xs text-gray-500">Klik untuk chat WA</span>
+                </div>
+                <i class="ri-whatsapp-line text-green-500 text-xl"></i>
+            </a>
+
+            <!-- Card Irmaf -->
+            <a href="https://wa.me/6285174091388?text=Assalamu'alaikum%20kak,%20saya%20mau%20tanya%20tentang%20IRMAF."
+                target="_blank" class="w-56 bg-white rounded-xl shadow-lg flex items-center justify-between px-4 py-3 hover:bg-green-50 transition duration-200">
+                <div class="flex flex-col">
+                    <span class="font-semibold text-green-700">Irmaf</span>
+                    <span class="text-xs text-gray-500">Klik untuk chat WA</span>
+                </div>
+                <i class="ri-whatsapp-line text-green-500 text-xl"></i>
+            </a>
+
+        </div>
+
+        <!-- Tombol WA utama -->
+        <button id="wa-toggle"
+            class="w-14 h-14 wa-fab bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center text-white text-2xl shadow-lg hover:from-green-600 hover:to-green-500 transition duration-200">
+            <i class="ri-whatsapp-line"></i>
+        </button>
+
+    </div>
+
+
+    <!-- Back to Top -->
+    <a href="#home" id="backtop"
+        class="fixed bottom-6 left-6 w-12 h-12 bg-gradient-to-r from-green-500 to-green-600 rounded-full flex items-center justify-center text-white shadow-lg hover:opacity-95 transition duration-200 z-40 hidden">
+        <i class="ri-arrow-up-line"></i>
+    </a>
+
+    <!-- SEMUA SCRIPT FUNGSI (intact, only added small behaviors) -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    <script>
+        // ===== DEBUG MODE =====
+        console.log('🚀 Script mulai loading...');
+
+        // ===== EMAILJS INITIALIZATION =====
+        console.log('📧 Menginisialisasi EmailJS...');
+        emailjs.init("bKrdj3622Cym9JHGz");
+        console.log('✅ EmailJS initialized');
+
+        /// ===== PROFESSIONAL NOTIFICATION SYSTEM =====
+        function showNotification({
+            title = 'Notification',
+            message = '',
+            type = 'success',
+            duration = 5000
+        } = {}) {
+            console.log(`🔔 Membuat notifikasi: ${title} - ${type}`);
+
+            let container = document.getElementById('notificationContainer');
+            if (!container) {
+                container = document.createElement('div');
+                container.id = 'notificationContainer';
+                container.style.cssText = `
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index: 10000;
+            max-width: 400px;
+        `;
+                document.body.appendChild(container);
+            }
+
+            const notification = document.createElement('div');
+            notification.className = `notification ${type}`;
+
+            notification.innerHTML = `
+        <div class="notification-content">
+            <div class="notification-icon">
+                <i class="fas ${getNotificationIcon(type)}"></i>
+            </div>
+            <div class="notification-text">
+                <div class="notification-title">${title}</div>
+                <div class="notification-message">${message}</div>
+            </div>
+            <button class="notification-close" onclick="this.parentElement.parentElement.remove()">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <div class="notification-progress"></div>
+    `;
+
+            container.appendChild(notification);
+
+            // Trigger animation - PAKAI CSS CLASS
+            setTimeout(() => notification.classList.add('show'), 100);
+
+            // Progress bar animation
+            const progressBar = notification.querySelector('.notification-progress');
+            if (progressBar && duration > 0) {
+                setTimeout(() => {
+                    progressBar.style.transition = `transform ${duration}ms linear`;
+                    progressBar.style.transform = 'scaleX(0)';
+                }, 100);
+            }
+
+            // Auto remove setelah duration
+            if (duration > 0) {
+                setTimeout(() => {
+                    if (notification.parentElement) {
+                        notification.classList.remove('show');
+                        setTimeout(() => {
+                            if (notification.parentElement) {
+                                notification.remove();
+                            }
+                        }, 400);
+                    }
+                }, duration);
+            }
+
+            return notification;
+        }
+
+        function getNotificationIcon(type) {
+            const icons = {
+                success: 'fa-check',
+                error: 'fa-times',
+                warning: 'fa-exclamation',
+                info: 'fa-info'
+            };
+            return icons[type] || 'fa-bell';
+        }
+
+        function getNotificationColor(type) {
+            const colors = {
+                success: 'var(--irmaf-green)',
+                error: '#EF4444',
+                warning: '#F59E0B',
+                info: '#3B82F6'
+            }
+            return colors[type] || '#6B7280';
+        }
+
+        // ===== SEND EMAIL FUNCTION DENGAN ERROR HANDLING LENGKAP =====
+        async function sendEmail(event) {
+            console.log('📨 Form submit triggered');
+            event.preventDefault();
+
+            const submitBtn = event.target.querySelector('button[type="submit"]');
+            const originalText = submitBtn.textContent;
+
+            // Show loading state
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Mengirim...';
+            submitBtn.disabled = true;
+
+            try {
+                // Collect form data
+                const formData = {
+                    user_name: document.querySelector('[name="user_name"]').value,
+                    user_email: document.querySelector('[name="user_email"]').value || 'Tidak diisi',
+                    message: document.querySelector('[name="message"]').value,
+                    timestamp: new Date().toLocaleString('id-ID'),
+                    from_website: 'Website IRMAF'
+                };
+
+                console.log('📝 Form data collected:', formData);
+
+                // Validasi
+                if (!formData.user_name.trim()) {
+                    throw new Error('Nama harus diisi');
+                }
+                if (!formData.message.trim()) {
+                    throw new Error('Pesan harus diisi');
+                }
+
+                // Show sending notification
+                showNotification({
+                    title: 'Mengirim Pesan...',
+                    message: 'Sedang mengirim pesan Anda',
+                    type: 'info',
+                    duration: 3000
+                });
+
+                console.log('🔄 Mengirim email via EmailJS...');
+
+                // Send email - PAKAI TRY-CATCH KHUSUS UNTUK EMAILJS
+                let response;
+                try {
+                    response = await emailjs.send(
+                        'service_0kp9hli',
+                        'template_cxak1cl',
+                        formData
+                    );
+                    console.log('✅ Email berhasil dikirim:', response);
+                } catch (emailError) {
+                    console.error('❌ EmailJS error:', emailError);
+
+                    // Tampilkan error detail di console untuk debugging
+                    if (emailError.text) {
+                        console.error('Error details:', emailError.text);
+                    }
+
+                    // Lempar error lagi untuk ditangkap oleh catch di luar
+                    throw emailError;
+                }
+
+                // Success notification
+                showNotification({
+                    title: 'Berhasil!',
+                    message: `Terima kasih <strong>${formData.user_name}</strong>, pesan sudah terkirim! Terima kasih, pesan dan saran Anda telah kami terima.`,
+                    type: 'success',
+                    duration: 6000
+                });
+
+                // Reset form
+                event.target.reset();
+
+            } catch (error) {
+                console.error('❌ Gagal mengirim email:', error);
+
+                let errorMessage = 'Gagal mengirim pesan. ';
+                let errorTitle = 'Gagal Mengirim!';
+
+                if (error.status === 0) {
+                    errorMessage += 'Tidak ada koneksi internet.';
+                } else if (error.text && error.text.includes('Invalid template')) {
+                    errorMessage += 'Template email tidak valid.';
+                } else if (error.text && error.text.includes('User ID')) {
+                    errorMessage += 'Public Key salah.';
+                } else if (error.text && error.text.includes('Service ID')) {
+                    errorMessage += 'Service ID tidak valid.';
+                } else if (error.text && error.text.includes('Template ID')) {
+                    errorMessage += 'Template ID tidak valid.';
+                } else if (error.text && error.text.includes('Failed to send')) {
+                    errorMessage += 'Server EmailJS bermasalah.';
+                } else if (error.message && error.message.includes('harus diisi')) {
+                    errorMessage = error.message;
+                    errorTitle = 'Form Tidak Lengkap ⚠️';
+                } else if (error.text) {
+                    errorMessage += 'Error: ' + error.text;
+                } else {
+                    errorMessage += 'Silakan coba lagi.';
+                }
+
+                // Tampilkan notifikasi error
+                showNotification({
+                    title: errorTitle,
+                    message: errorMessage,
+                    type: 'error',
+                    duration: 8000 // Lebih lama biar bisa dibaca
+                });
+
+                // Tampilkan juga alert untuk pastikan user lihat
+                setTimeout(() => {
+                    if (confirm(`Gagal mengirim pesan:
+
+${errorMessage}
+
+Coba lagi?`)) {
+                        // User mau coba lagi, form tetap terisi
+                    }
+                }, 1000);
+
+            } finally {
+                // Reset button
+                submitBtn.textContent = originalText;
+                submitBtn.disabled = false;
+            }
+        }
+
+        // ===== TEST FUNGSI GAGAL =====
+        function testEmailJSError() {
+            console.log('🧪 Testing EmailJS error...');
+
+            // Simulasikan error dengan credentials salah
+            const testData = {
+                user_name: 'Test Error',
+                user_email: 'test@example.com',
+                message: 'This should fail',
+                timestamp: new Date().toLocaleString('id-ID')
+            };
+
+            // Pakai service ID yang salah untuk test error
+            emailjs.send(
+                'service_salah', // Service ID salah
+                'template_salah', // Template ID salah
+                testData
+            ).then(response => {
+                console.log('Unexpected success:', response);
+            }).catch(error => {
+                console.log('✅ Error test successful:', error);
+                showNotification({
+                    title: 'Error Test Berhasil! ✅',
+                    message: 'Sistem error handling bekerja dengan baik',
+                    type: 'success',
+                    duration: 5000
+                });
+            });
+        }
+
+        // ===== TEST KONEKSI INTERNET =====
+        function testNoConnection() {
+            console.log('🧪 Testing no connection...');
+            showNotification({
+                title: 'Test No Connection 🌐',
+                message: 'Ini mensimulasikan error tanpa koneksi internet',
+                type: 'error',
+                duration: 5000
+            });
+        }
+
+        // ===== TEST FUNCTIONS =====
+        function testNotifications() {
+            console.log('🧪 Testing notifications...');
+            showNotification({
+                title: 'Success Test! ✅',
+                message: 'Ini adalah notifikasi success untuk testing',
+                type: 'success',
+                duration: 4000
+            });
+
+            setTimeout(() => {
+                showNotification({
+                    title: 'Error Test! ❌',
+                    message: 'Ini adalah notifikasi error untuk testing',
+                    type: 'error',
+                    duration: 4000
+                });
+            }, 1000);
+
+            setTimeout(() => {
+                showNotification({
+                    title: 'Warning Test! ⚠️',
+                    message: 'Ini adalah notifikasi warning untuk testing',
+                    type: 'warning',
+                    duration: 4000
+                });
+            }, 2000);
+
+            setTimeout(() => {
+                showNotification({
+                    title: 'Info Test! ℹ️',
+                    message: 'Ini adalah notifikasi info untuk testing',
+                    type: 'info',
+                    duration: 4000
+                });
+            }, 3000);
+        }
+
+        async function testEmailJSConnection() {
+            try {
+                console.log('🧪 Testing EmailJS connection...');
+
+                const testData = {
+                    user_name: 'Test User',
+                    user_email: 'test@example.com',
+                    message: 'This is a test message from IRMAF website',
+                    timestamp: new Date().toLocaleString('id-ID')
+                };
+
+                const response = await emailjs.send(
+                    'service_0kp9hli',
+                    'template_cxak1cl',
+                    testData
+                );
+
+                console.log('✅ EmailJS Connection Test: SUCCESS', response);
+                showNotification({
+                    title: 'Connection Test ✅',
+                    message: 'EmailJS terhubung dengan baik!',
+                    type: 'success',
+                    duration: 4000
+                });
+
+                return true;
+            } catch (error) {
+                console.error('❌ EmailJS Connection Test: FAILED', error);
+                showNotification({
+                    title: 'Connection Test ❌',
+                    message: 'Gagal terhubung ke EmailJS: ' + (error.text || error.message),
+                    type: 'error',
+                    duration: 6000
+                });
+                return false;
+            }
+        }
+
+        // ===== NAV MENU (hamburger) (kept intact tapi smoother) =====
+
+        (function () {
+            const hamburger = document.getElementById('hamburger');
+            const menu = document.getElementById('mobileMenu');
+
+            if (!hamburger || !menu) return;
+
+            menu.classList.add('-translate-y-5');
+
+            function openMenu() {
+                menu.classList.remove('hidden');
+                requestAnimationFrame(() => {
+                    menu.classList.remove('opacity-0');
+                    menu.classList.remove('-translate-y-5');
+                });
+                document.body.style.overflow = 'hidden';
+            }
+
+            function closeMenu() {
+                menu.classList.add('opacity-0');
+                menu.classList.add('-translate-y-5');
+                setTimeout(() => {
+                    menu.classList.add('hidden');
+                }, 300);
+                document.body.style.overflow = '';
+            }
+
+
+            hamburger.addEventListener('click', e => {
+                e.stopPropagation();
+                const isOpen = !menu.classList.contains('hidden');
+                if (isOpen) closeMenu();
+                else openMenu();
+            });
+
+            document.addEventListener('click', e => {
+                if (!menu.contains(e.target) && !hamburger.contains(e.target)) {
+                    closeMenu();
+                }
+            });
+
+            document.querySelectorAll('#mobileMenu a').forEach(a => {
+                a.addEventListener('click', () => {
+                    closeMenu();
+                });
+            });
+
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') closeMenu();
+            });
+        })();
+
+        // ===== GALERI SLIDER (smoother) =====
+        (function () {
+            const slider = document.querySelector('.galeri-slider');
+            const items = document.querySelectorAll('.galeri-item');
+            const prevBtn = document.querySelector('.prev');
+            const nextBtn = document.querySelector('.next');
+
+            if (!slider || items.length === 0) return;
+
+            let currentIndex = 0;
+
+            function updateSlide() {
+    const itemRect = items[0].getBoundingClientRect();
+    const style = window.getComputedStyle(items[0]);
+    const margin = parseFloat(style.marginLeft) + parseFloat(style.marginRight);
+
+    const slideWidth = itemRect.width + margin;
+
+    slider.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
+}
+
+
+            function nextSlide() {
+                if (currentIndex < items.length - 1) currentIndex++;
+                updateSlide();
+            }
+
+            function prevSlide() {
+                if (currentIndex > 0) currentIndex--;
+                updateSlide();
+            }
+
+            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+
+            // Klik 1x di HP buat nampilin overlay
+            items.forEach(item => {
+                item.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    document.querySelectorAll('.galeri-item').forEach(i => {
+                        if (i !== item) i.classList.remove('show-overlay');
+                    });
+                    item.classList.toggle('show-overlay');
+                });
+            });
+
+            // Close overlay ketika klik di luar
+            document.addEventListener('click', () => {
+                document.querySelectorAll('.galeri-item').forEach(i => {
+                    i.classList.remove('show-overlay');
+                });
+            });
+
+            // Geser manual di HP (swipe)
+            let startX = 0;
+            slider.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+            slider.addEventListener('touchend', e => {
+                const diff = e.changedTouches[0].clientX - startX;
+                if (diff > 50 && currentIndex > 0) currentIndex--;
+                if (diff < -50 && currentIndex < items.length - 1) currentIndex++;
+                updateSlide();
+            });
+
+            window.addEventListener('resize', updateSlide);
+
+            // initial
+            setTimeout(updateSlide, 300);
+        })();
+
+        // ===== BACK TO TOP =====
+        const backtop = document.getElementById('backtop');
+        if (backtop) {
+            window.addEventListener('scroll', () => {
+                backtop.style.display = window.scrollY > 600 ? 'flex' : 'none';
+            });
+
+            backtop.addEventListener('click', () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        }
+
+        // ====Script Toggle Smooth Animation  floating button ====
+
+        const toggleBtn = document.getElementById('wa-toggle');
+        const cards = document.getElementById('wa-cards');
+
+        toggleBtn.addEventListener('click', () => {
+            if (cards.classList.contains('opacity-0')) {
+                // Show cards with animation
+                cards.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+                cards.classList.add('opacity-100', 'translate-y-0', 'pointer-events-auto');
+            } else {
+                // Hide cards with animation
+                cards.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+                cards.classList.remove('opacity-100', 'translate-y-0', 'pointer-events-auto');
+            }
+        });
+
+
+        // ===== YEAR =====
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        const flipCard = document.querySelector('.flip-card');
+        if (flipCard) {
+            let lastTapTime = 0;
+            let isOverlayVisible = false;
+            let isFlipped = false;
+
+            flipCard.addEventListener('dblclick', () => {
+                isFlipped = !isFlipped;
+                flipCard.classList.toggle('flipped', isFlipped);
+                flipCard.classList.remove('show-overlay');
+                isOverlayVisible = false;
+            });
+
+            flipCard.addEventListener('touchend', (e) => {
+                const now = new Date().getTime();
+                const timeDiff = now - lastTapTime;
+
+                if (timeDiff < 300 && timeDiff > 0) {
+                    e.preventDefault();
+                    isFlipped = !isFlipped;
+                    flipCard.classList.toggle('flipped', isFlipped);
+                    flipCard.classList.remove('show-overlay');
+                    isOverlayVisible = false;
+                } else {
+                    isOverlayVisible = !isOverlayVisible;
+                    flipCard.classList.toggle('show-overlay', isOverlayVisible);
+                }
+
+                lastTapTime = now;
+            });
+
+            document.addEventListener('click', (e) => {
+                if (!flipCard.contains(e.target)) {
+                    flipCard.classList.remove('show-overlay');
+                    isOverlayVisible = false;
+                }
+            });
+        }
+
+        // ===== FORM HANDLER =====
+        const kontakForm = document.getElementById("kontakForm");
+        if (kontakForm) {
+            kontakForm.addEventListener("submit", sendEmail);
+        }
+
+        // ===== HOVER EFFECTS =====
+        document.querySelectorAll('.anggota, .flip-card').forEach(card => {
+            card.addEventListener('mouseenter', function () {
+                this.style.transform = 'scale(1.05)';
+            });
+
+            card.addEventListener('mouseleave', function () {
+                this.style.transform = 'scale(1)';
+            });
+        });
+
+        document.querySelectorAll('#kegiatan .bg-white').forEach(card => {
+            card.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-6px)';
+                this.style.boxShadow = '0 12px 28px rgba(0,0,0,0.08)';
+            });
+
+            card.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(0)';
+                this.style.boxShadow = '0 4px 6px rgba(0,0,0,0.05)';
+            });
+        });
+
+        // ===== WELCOME NOTIFICATION =====
+        window.addEventListener('load', function () {
+            setTimeout(() => {
+                showNotification({
+                    title: 'Selamat Datang!',
+                    message: 'Terima kasih telah mengunjungi website IRMAF - Ikatan Remaja Masjid Al-Furqon',
+                    type: 'info',
+                    duration: 5000
+                });
+            }, 1000);
+        });
+
+        // ===== SMOOTH SCROLLING =====
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // ===== SCROLL REVEAL & NAVBAR SOLID =====
+        (function () {
+            const reveals = document.querySelectorAll('.reveal');
+
+            function onScrollReveal() {
+                reveals.forEach(r => {
+                    const rect = r.getBoundingClientRect();
+                    if (rect.top < (window.innerHeight - 80)) r.classList.add('show');
+                });
+
+                // navbar
+                const nav = document.getElementById('siteNav');
+                if (window.scrollY > 70) nav.classList.add('solid'), nav.classList.remove('transparent');
+                else nav.classList.add('transparent'), nav.classList.remove('solid');
+            }
+            window.addEventListener('scroll', onScrollReveal);
+            onScrollReveal();
+        })();
+
+        // ===== GLOBAL DEBUG FUNCTIONS =====
+        window.testEmailJS = testEmailJSConnection;
+        window.testNotif = testNotifications;
+        window.testError = testEmailJSError;
+        window.testNoConnection = testNoConnection;
+
+        console.log('✅ All JavaScript functions loaded successfully!');
+        console.log('🔧 Debug commands available:');
+        console.log('   testNotif()       - Test notifikasi');
+        console.log('   testEmailJS()     - Test koneksi EmailJS');
+        console.log('   testError()       - Test error handling');
+        console.log('   testNoConnection()- Test error koneksi');
+    </script>
+
+    <!-- Optional structured data (JSON-LD) -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "IRMAF - Ikatan Remaja Masjid Al-Furqon",
+            "url": "",
+            "logo": "https://files.catbox.moe/44rpu5.jpg",
+            "sameAs": []
+        }
+    </script>
+</body>
+
+</html>
