@@ -655,18 +655,11 @@ modal.addEventListener("click", (e) => {
         console.log('   testError()       - Test error handling');
         console.log('   testNoConnection()- Test error koneksi');
 
-    const structuredData = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  "name": "IRMAF - Ikatan Remaja Masjid Al-Furqon",
-  "url": "https://irmafalfurqon.vercel.app", // isi kalau sudah ada
-  "logo": "https://files.catbox.moe/44rpu5.jpg",
-  "sameAs": ["https://www.instagram.com/irmaf.bm",
-  "https://tiktok.com/@irmaf_bm"]
-};
+    
 
 const script = document.createElement("script");
 script.type = "application/ld+json";
 script.text = JSON.stringify(structuredData);
+
 
 document.head.appendChild(script);
