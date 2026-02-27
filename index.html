@@ -29,21 +29,13 @@ html { scroll-behavior: smooth; font-family: 'Cairo', system-ui, -apple-system, 
 body::before { content: ''; position: fixed; inset: 0; pointer-events: none; opacity: 0.035; background-image: radial-gradient(circle at 10% 10%, rgba(22, 163, 74, 0.06) 0 1px, transparent 2px), url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="120" height="120" viewBox="0 0 120 120"><g fill="none" stroke="%2316A34A" stroke-opacity="0.06" stroke-width="1"><path d="M60 10 L80 30 L60 50 L40 30 Z"/></g></svg>'); background-repeat: repeat; mix-blend-mode: overlay; }
 
 .card { background: white; border-radius: 14px; box-shadow: var(--card-shadow); transition: transform .45s cubic-bezier(.2, .9, .2, 1), box-shadow .45s; }
-
 .card:hover { transform: translateY(-6px); }
-
 .flip-card { perspective: 1000px; position: relative; width: 100%; height: 100%; }
-
 .flip-inner { position: relative; width: 100%; height: 100%; transition: transform 0.7s cubic-bezier(.2, .9, .2, 1); transform-style: preserve-3d; }
-
 .flip-card.flipped .flip-inner { transform: rotateY(180deg); }
-
 .flip-front, .flip-back { position: absolute; width: 100%; height: 100%; backface-visibility: hidden; border-radius: 12px; overflow: hidden; top: 0; left: 0; }
-
 .flip-back { transform: rotateY(180deg); }
-
 .galeri-slider { transition: transform .6s cubic-bezier(.22, .9, .13, 1); }
-
 .notification{position:fixed;top:100px;right:20px;background:white;border-radius:14px;padding:0;box-shadow:0 12px 28px rgba(16,163,74,0.12);border-left:4px solid transparent;background-clip:padding-box;transform:translateX(420px);opacity:0;transition:all .45s cubic-bezier(.68,-.55,.265,1.55);z-index:10000;max-width:380px;width:90%;background-origin:border-box;background-image:linear-gradient(white,white);}
 .notification.show{transform:translateX(0);opacity:1;}
 .notification.success{background-color:white;}
@@ -65,36 +57,31 @@ body::before { content: ''; position: fixed; inset: 0; pointer-events: none; opa
 .notification.error .notification-progress { background:linear-gradient(90deg,#EF4444,#DC2626); }
 .notification.warning .notification-progress { background:linear-gradient(90deg,#F59E0B,#D97706); }
 .notification.info .notification-progress { background:linear-gradient(90deg,#16A34A,#10B981); }
-
 @media(max-width:640px) { .notification { right: 10px; left: 10px; max-width: none; width: auto; } }
-
 .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 50; transition: background .35s, box-shadow .35s; padding: 12px; }
-
 .site-nav.transparent { background: transparent; backdrop-filter: blur(6px); }
-
 .site-nav.solid { background: rgba(255,255,255,0.96); box-shadow: 0 6px 20px rgba(2,6,23,0.06); }
-
 .hero-figure { transition: transform .8s cubic-bezier(.2, .9, .2, 1); }
-
 .hero-figure.group-hover-scale:hover { transform: scale(1.05) translateY(-8px); }
-
 .btn-primary { background: linear-gradient(90deg, var(--irmaf-green), #10b981); color: white; padding: .85rem 1.1rem; border-radius: 12px; font-weight: 600; box-shadow: 0 8px 20px rgba(16,163,74,0.12); transition: transform .22s, box-shadow .22s; }
-
 .btn-primary:hover { transform: translateY(-3px); box-shadow: 0 18px 40px rgba(16,163,74,0.16); }
-
 .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s cubic-bezier(.2,.9,.2,1), transform .7s cubic-bezier(.2,.9,.2,1); }
-
 .reveal.show { opacity: 1; transform: translateY(0); }
-
 .wa-fab { transition: transform .35s cubic-bezier(.2,.9,.2,1), box-shadow .35s; }
-
 .wa-fab:hover { transform: translateY(-6px) scale(1.03); box-shadow: 0 16px 36px rgba(16,163,74,0.18); }
-
 #backtop { transition: transform .35s, opacity .35s; }
-
 .accent-green { color: var(--irmaf-green); }
-
 .bg-green-soft { background: linear-gradient(180deg, rgba(134,239,172,0.3), rgba(22,163,74,0.03)); }
+::selection {
+  background:#02b042ba;
+  color: black; /* warna text pas diblok */
+}
+
+/* === IMAGE MODAL === */
+.image-modal { position: fixed; inset: 0; background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center; z-index: 9999; opacity: 0; visibility: hidden; transition: 0.3s ease; }
+.image-modal.show { opacity: 1; visibility: visible; }
+.image-modal img { max-width: 90%; max-height: 85%; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
+.image-modal .close-btn { position: absolute; top: 25px; right: 30px; font-size: 32px; color: white; cursor: pointer; font-weight: bold; }
 
 /* ========== RESPONSIVE FOR TABLET / IPAD (768–1024px) ========== */
 @media (min-width:768px) and (max-width:1024px){
@@ -125,6 +112,11 @@ body::before { content: ''; position: fixed; inset: 0; pointer-events: none; opa
 </style>
 
 </head>
+
+<div id="imageModal" class="image-modal">
+  <span class="close-btn" id="closeModal">&times;</span>
+  <img id="modalImg" src="" alt="Preview">
+</div>
 
 <body class="bg-gray-50 font-sans">
 
@@ -375,7 +367,7 @@ body::before { content: ''; position: fixed; inset: 0; pointer-events: none; opa
                             class="w-full h-full object-cover">
                         <div class="overlay absolute inset-0 opacity-0 group-hover:opacity-100 flex flex-col justify-end items-center text-white p-6 text-center"
                             style="background: linear-gradient(to top, rgba(0,0,0,0.7), rgba(0,0,0,0));">
-                            <h3 class="text-xl font-bold text-white mb-2">Paung</h3>
+                            <h3 class="text-xl font-bold text-white mb-2">Haritsah</h3>
                             <p class="font-semibold mb-3">Ketua Umum</p>
                             <span class="text-sm text-white/80 mb-4">Memimpin dan mengkoordinasikan seluruh kegiatan
                                 IRMAF dengan semangat kebersamaan.</span>
@@ -444,7 +436,7 @@ body::before { content: ''; position: fixed; inset: 0; pointer-events: none; opa
                                         <i class="fab fa-whatsapp text-2xl md:text-xl"></i>
                                     </a>
 
-                                    <a href="https://instagram.com/fathgoingcrazyy" target="_blank" class="w-12 h-12 md:w-10 md:h-10 bg-white/20 rounded-full flex items-center justify-center 
+                                    <a href="https://instagram.com/afathihrdt" target="_blank" class="w-12 h-12 md:w-10 md:h-10 bg-white/20 rounded-full flex items-center justify-center 
            hover:bg-pink-500 hover:scale-110 transition duration-200">
                                         <i class="fab fa-instagram text-2xl md:text-xl"></i>
                                     </a>
@@ -535,8 +527,8 @@ body::before { content: ''; position: fixed; inset: 0; pointer-events: none; opa
 
                 <!-- Rihlah -->
                 <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
-                    <img src="https://files.catbox.moe/8os3ez.jpg" alt="Kegiatan rihlah IRMAF di Cibodas Jawa Barat" loading="lazy" class="w-full h-48 object-cover rounded-xl mb-4" >
-                    <h4 class="text-xl font-semibold text-gray-900 mb-2">Rihlah</h4>
+                    <img src="https://files.catbox.moe/8os3ez.jpg" alt="Kegiatan Tafajur alam IRMAF di Cibodas Jawa Barat" loading="lazy" class="w-full h-48 object-cover rounded-xl mb-4" >
+                    <h4 class="text-xl font-semibold text-gray-900 mb-2">Tafakur Alam</h4>
 
                     <p class="text-gray-500 text-sm mb-3">
                         <span class="flex items-center">
@@ -573,7 +565,7 @@ body::before { content: ''; position: fixed; inset: 0; pointer-events: none; opa
                 </div>
 
                 <!-- Futsal -->
-                <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
+                <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition duration-300 transform hover:-translate-y-1 ">
                     <img src="https://files.catbox.moe/x5zttx.png" alt="Kegiatan IRMAF CUP di Futsal Ala-Olo, Bekasi" loading="lazy" class="w-full h-48 object-cover rounded-xl mb-4">
                     <h4 class="text-xl font-semibold text-gray-900 mb-2">IRMAF CUP 2025</h4>
 
@@ -648,7 +640,7 @@ body::before { content: ''; position: fixed; inset: 0; pointer-events: none; opa
                             <div class="absolute inset-0 bg-black/60 backdrop-blur-[2px] 
                                 opacity-0 group-hover:opacity-100 transition duration-500 
                                 flex flex-col justify-center items-center text-white p-5 text-center">
-                                <h3 class="text-xl font-semibold mb-2 drop-shadow-md">Rihlah</h3>
+                                <h3 class="text-xl font-semibold mb-2 drop-shadow-md">Tafakur Alam</h3>
                                 <p class="text-sm opacity-90">Kegiatan tafakur di alam Cibodas, menikmati keindahan ciptaan Allah SWT, dalam rangka mempererat kebersamaan dan kemandirian.</p>
                             </div>
                         </div>
@@ -754,7 +746,7 @@ body::before { content: ''; position: fixed; inset: 0; pointer-events: none; opa
                     </div>
 
                     <button type="submit"
-                        class="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-4 rounded-lg font-semibold hover:opacity-95 transition duration-200 shadow-md">
+                        class="w-full bg-gradient-to-r from-green-500 to-green-600 text-white py-4 rounded-lg font-semibold hover:opacity-95 transition duration-200 shadow-md ">
                         Kirim Pesan
                     </button>
                     <input type="hidden" name="timestamp">
@@ -828,9 +820,15 @@ body::before { content: ''; position: fixed; inset: 0; pointer-events: none; opa
                             target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-pink-500 transition duration-200">
                             <i class="ri-instagram-line"></i>
                         </a>
+                        <a href="https://tiktok.com/@irmaf_bm"
+                            target="_blank" class="w-10 h-10 bg-gray-800 rounded-full flex items-center justify-center hover:bg-black transition duration-200">
+                            <i class="ri-tiktok-line"></i>
+                        </a>
                     </div>
                 </div>
             </div>
+
+            
 
             <div class="border-t border-gray-800 mt-8 pt-8 text-center">
                 <p class="text-gray-400 text-sm">
@@ -1502,6 +1500,34 @@ Coba lagi?`)) {
             window.addEventListener('scroll', onScrollReveal);
             onScrollReveal();
         })();
+
+        // ===== IMAGE CLICK MODAL =====
+document.addEventListener("DOMContentLoaded", function() {
+
+const modal = document.getElementById("imageModal");
+const modalImg = document.getElementById("modalImg");
+const closeModal = document.getElementById("closeModal");
+
+// HANYA IMG DI DALAM #kegiatan
+document.querySelectorAll("#kegiatan img").forEach(img => {
+  img.style.cursor = "pointer";
+  img.addEventListener("click", function () {
+    modal.classList.add("show");
+    modalImg.src = this.src;
+  });
+});
+
+closeModal.addEventListener("click", () => {
+  modal.classList.remove("show");
+});
+
+modal.addEventListener("click", (e) => {
+  if (e.target === modal) {
+    modal.classList.remove("show");
+  }
+});
+
+});
 
         // ===== GLOBAL DEBUG FUNCTIONS =====
         window.testEmailJS = testEmailJSConnection;
