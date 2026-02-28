@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="id">
 
@@ -103,6 +104,13 @@ body::before { content: ''; position: fixed; inset: 0; pointer-events: none; opa
 .image-modal.show { opacity: 1; visibility: visible; }
 .image-modal img { max-width: 90%; max-height: 85%; border-radius: 12px; box-shadow: 0 20px 60px rgba(0,0,0,0.4); }
 .image-modal .close-btn { position: absolute; top: 25px; right: 30px; font-size: 32px; color: white; cursor: pointer; font-weight: bold; }
+
+/*== STYLE ANIMASI BINTANG ===*/
+.star {animation: twinkle 2.5s infinite ease-in-out;}
+.star2 { animation-delay: 0.5s; }.star3 { animation-delay: 1s; }.star4 { animation-delay: 1.5s; }
+@keyframes twinkle {
+    0%, 100% { opacity: 0.3; transform: scale(0.9); }50% { opacity: 1; transform: scale(1.2); }
+}
 
 /* ========== RESPONSIVE FOR TABLET / IPAD (768–1024px) ========== */
 @media (min-width:768px) and (max-width:1024px){
@@ -544,25 +552,49 @@ Kami menyelenggarakan kajian rutin, bakti sosial, pelatihan kepemimpinan, serta 
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
 
-                 <!-- Sanlat -->
-                <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition duration-300 transform hover:-translate-y-1 ">
-                    <img src="https://files.catbox.moe/hjrgwz.JPG" alt="Kegiatan Sanlat IRMAF Ramadhan 1447H" loading="lazy" class="w-full h-48 object-cover rounded-xl mb-4">
-                    <h4 class="text-xl font-semibold text-gray-900 mb-2">Sanlat Ramadhan 1447H</h4>
+                 <!-- SANLAT RAMADHAN RECAP TERBARU -->
+<div class="relative bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition duration-300 transform hover:-translate-y-1 overflow-hidden">
 
-                    <p class="text-gray-500 text-sm mb-3">
-                        <span class="flex items-center">
-                            <i class="ri-calendar-line mr-2"></i>Sabtu, 28 Februari 2026
-                        </span>
-                        <span class="flex items-center mt-1">
-                            <i class="ri-map-pin-line mr-2"></i>Masjid Al-Furqon
-                        </span>
-                    </p>
+    <!-- Badge Recap Terbaru -->
+    <div class="absolute top-4 right-4 flex items-center gap-2 bg-emerald-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md z-10">
+        🌙 Recap Terbaru
+    </div>
 
-                    <p class="text-gray-600 leading-relaxed">
-                        Kegiatan Sanlat ini menjadi momen istimewa untuk menumbuhkan semangat ibadah, mempererat ukhuwah, serta membentuk generasi muda yang berakhlak mulia.
-Dengan penuh kebersamaan dan keceriaan, anak-anak mengikuti rangkaian kegiatan edukatif, islami, dan inspiratif di bulan suci Ramadhan.
-                    </p>
-                </div>
+    <!-- Bintang Ramai -->
+<div class="absolute top-6 left-6 text-yellow-400 text-xl star star1">⭐</div>
+<div class="absolute top-10 left-14 text-yellow-300 text-sm star star2">✨</div>
+<div class="absolute top-4 left-20 text-yellow-400 text-lg star star3">⭐</div>
+<div class="absolute top-14 left-4 text-yellow-300 text-xs star star4">✨</div>
+    <!-- Gambar -->
+    <img src="https://files.catbox.moe/hjrgwz.JPG"
+         alt="Kegiatan Sanlat IRMAF Ramadhan 1447H"
+         loading="lazy"
+         class="w-full h-48 object-cover rounded-xl mb-4">
+
+    <!-- Judul -->
+    <h4 class="text-xl font-semibold text-gray-900 mb-2">
+        Sanlat Ramadhan 1447H
+    </h4>
+
+    <!-- Tanggal & Lokasi -->
+    <p class="text-gray-500 text-sm mb-3">
+        <span class="flex items-center">
+            <i class="ri-calendar-line mr-2"></i>Sabtu, 28 Februari 2026
+        </span>
+        <span class="flex items-center mt-1">
+            <i class="ri-map-pin-line mr-2"></i>Masjid Al-Furqon
+        </span>
+    </p>
+
+    <!-- Deskripsi -->
+    <p class="text-gray-600 leading-relaxed">
+        Kegiatan Sanlat ini menjadi momen istimewa untuk menumbuhkan semangat ibadah,
+        mempererat ukhuwah, serta membentuk generasi muda yang berakhlak mulia.
+        Dengan penuh kebersamaan dan keceriaan, anak-anak mengikuti rangkaian kegiatan
+        edukatif, islami, dan inspiratif di bulan suci Ramadhan.
+    </p>
+
+</div>
 
                 
                 <!-- Takjil -->
