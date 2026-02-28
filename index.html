@@ -111,6 +111,9 @@ body::before { content: ''; position: fixed; inset: 0; pointer-events: none; opa
 @keyframes twinkle {
     0%, 100% { opacity: 0.3; transform: scale(0.9); }50% { opacity: 1; transform: scale(1.2); }
 }
+/*== STYLE ANIMASI GETER ==*/
+@keyframes shakeSoft {0%, 100% { transform: translateX(0); }20% { transform: translateX(-2px); }40% { transform: translateX(2px); }60% { transform: translateX(-2px); }80% { transform: translateX(2px); }}
+.animate-shake {animation: shakeSoft 0.6s ease-in-out infinite;}
 
 /* ========== RESPONSIVE FOR TABLET / IPAD (768–1024px) ========== */
 @media (min-width:768px) and (max-width:1024px){
@@ -656,24 +659,43 @@ Kami menyelenggarakan kajian rutin, bakti sosial, pelatihan kepemimpinan, serta 
                     </p>
                 </div>
                 
-                <!--fun futsal--->
-                <div class="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
-                    <img src="https://files.catbox.moe/10ypjx.jpeg" alt="Kegiatan SPORT DAY di Estadio Futsal, Bekasi" loading="lazy" class="w-full h-48 object-cover rounded-xl mb-4">
-                    <h4 class="text-xl font-semibold text-gray-900 mb-2">SPORT DAY</h4>
+                <!-- FUN FUTSAL / SPORT DAY -->
+<div class="relative bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-lg transition duration-300 transform hover:-translate-y-1">
 
-                    <p class="text-gray-500 text-sm mb-3">
-                        <span class="flex items-center">
-                            <i class="ri-calendar-line mr-2"></i>Bulanan
-                        </span>
-                        <span class="flex items-center mt-1">
-                            <i class="ri-map-pin-line mr-2"></i>Estadio Futsal, Bekasi
-                        </span>
-                    </p>
+    <!-- Badge Bulanan -->
+    <div class="absolute top-4 right-4 bg-blue-600 text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md animate-shake">
+        🔥 Bulanan
+    </div>
 
-                    <p class="text-gray-600 leading-relaxed">
-                        Sebuah ajang futsal rutin yang tidak hanya mengejar prestasi di lapangan, tetapi juga memperkokoh tali persaudaraan dan membentuk karakter remaja muslim yang sportif dan aktif.
-                    </p>
-                </div>
+    <!-- Gambar -->
+    <img src="https://files.catbox.moe/10ypjx.jpeg"
+         alt="Kegiatan SPORT DAY di Estadio Futsal, Bekasi"
+         loading="lazy"
+         class="w-full h-48 object-cover rounded-xl mb-4">
+
+    <!-- Judul -->
+    <h4 class="text-xl font-semibold text-gray-900 mb-2">
+        SPORT DAY
+    </h4>
+
+    <!-- Tanggal & Lokasi -->
+    <p class="text-gray-500 text-sm mb-3">
+        <span class="flex items-center">
+            <i class="ri-calendar-line mr-2"></i>Bulanan
+        </span>
+        <span class="flex items-center mt-1">
+            <i class="ri-map-pin-line mr-2"></i>Estadio Futsal, Bekasi
+        </span>
+    </p>
+
+    <!-- Deskripsi -->
+    <p class="text-gray-600 leading-relaxed">
+        Sebuah ajang futsal rutin yang tidak hanya mengejar prestasi di lapangan,
+        tetapi juga memperkokoh tali persaudaraan dan membentuk karakter remaja muslim
+        yang sportif dan aktif.
+    </p>
+
+</div>
 
             </div>
         </div>
