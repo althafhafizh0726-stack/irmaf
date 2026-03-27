@@ -128,3 +128,5 @@ const siteHeader = document.getElementById("siteHeader");
 
     updateHeaderState();
     setActiveLink();
+
+function _0xabc(){var _0x1="popup";document.getElementById(_0x1).style.display="none";}
