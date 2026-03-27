@@ -129,4 +129,4 @@ const siteHeader = document.getElementById("siteHeader");
     updateHeaderState();
     setActiveLink();
 
-var _0x1a2b=["popup","block"];document.getElementById(_0x1a2b[0]).style.display=_0x1a2b[1];
+
