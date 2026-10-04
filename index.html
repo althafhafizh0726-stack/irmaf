@@ -645,27 +645,7 @@
   </div>
   <script src="script.js"></script>
   <script>
-    // Handle the contact form explicitly so the browser does not reload the page
-    // and lose the values before opening WhatsApp.
-    document.getElementById('contactForm').addEventListener('submit', function (event) {
-      event.preventDefault();
-
-      const name = document.getElementById('name').value.trim();
-      const email = document.getElementById('email').value.trim();
-      const subject = document.getElementById('subject').value.trim();
-      const message = document.getElementById('message').value.trim();
-      const lines = [
-        'Assalamu\'alaikum kak, saya ' + name + '.',
-        email ? 'Email: ' + email : '',
-        subject ? 'Subjek: ' + subject : '',
-        '',
-        message
-      ].filter(Boolean);
-      const whatsappUrl = 'https://wa.me/6285174091388?text=' +
-        encodeURIComponent(lines.join('\n'));
-
-      window.open(whatsappUrl, '_blank', 'noopener,noreferrer');
-    });
+    
   </script>
 </body>
 
